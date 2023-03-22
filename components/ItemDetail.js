@@ -7,7 +7,6 @@ const ItemDetail =(props) =>{
   const addItem = props.addToCart;
   useEffect(() => {
     fetchItem();
-    console.log(m)
   }, [])
    const fetchItem = async () => {
       const data = await fetch(`https://fakestoreapi.com/products/${m.id}`)
