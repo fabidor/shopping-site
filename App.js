@@ -38,6 +38,17 @@ const fetchItem = async (id) =>{
   updateCart([...editCart]);
   
 }
+ const reduceItem = (e) =>{
+  let newCart = [...cart];
+  let updateCandidate=newCart[e.target.id];
+  if(updateCandidate.count === 1){
+    newCart.splice(e.target.id,1);
+  
+  } else{
+    updateCandidate.count = updateCandidate.count - 1;
+  }
+  updateCart(newCart);
+ }
   useEffect(() =>{
    updateCartSize(cart.length);
   }, [cart]) 
@@ -47,7 +58,7 @@ const fetchItem = async (id) =>{
       <Routes>
         <Route path= "/" element={<About />} />
         <Route path = "/shop" element = {<Shop addToCart={addToCart}/>} />
-        <Route path = "/cart" element = {<Cart cart = {cart} removeFromCart={removeFromCart}/>} />
+        <Route path = "/cart" element = {<Cart cart = {cart} removeFromCart={removeFromCart} reduceItem={reduceItem}/>} />
         <Route path="/shop/:id" element = {<ItemDetail addToCart={addToCart}/>} />
       </Routes>
     </BrowserRouter>

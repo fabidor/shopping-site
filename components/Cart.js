@@ -18,6 +18,7 @@ const Cart =(props)=> {
           {cartItems.map(item =>(
             <div key={cartItems.indexOf(item)} className="thumbnailWithButton" >
               <ItemThumbnail itemDetails = {item} /> 
+              <button onClick = {props.reduceItem} id={cartItems.indexOf(item)}>-</button>
               <div>{item.count}</div>
               <button onClick={props.removeFromCart} id={cartItems.indexOf(item)}>Remove From Cart</button>
             </div>
@@ -26,7 +27,7 @@ const Cart =(props)=> {
             
           )}
         </div>
-        <div>Cart Total: {price}</div>
+        <div>Cart Total: {price.toFixed(2)}</div>
       </div>
     );
   }
