@@ -1,28 +1,32 @@
 import React, {useState, useEffect} from "react"
+import ItemThumbnail from "./ItemThumbnail.js"
 
 const Cart =(props)=> {
-  const [cartItems, updateCart] = useState(props.cart);
-  const[realCart, updateRealCart] = useState([]);
-  useEffect(()=>{
-    fetchItems();
-  }, [])
-  const fetchItems = async() =>{
-  
-    for(let item in cartItems){
-      const data = await fetch(`https://fakestoreapi.com/products/${item}`)
-      const itemInfo = await data.json();
-      itemInfo.count=cartItems[item];
-      updateRealCart([
-        itemInfo,
-        ...realCart
-        
-      ])
-    }
+  const cartItems=props.cart;
+  const cartPrice = (cartItems) =>{
+    let sum = 0;
+    cartItems.map(item =>(
+      sum = sum+(item['price']*item['count'])
+    ))
+    return sum;
   }
+  const price = cartPrice(cartItems);
     return (
       <div className="App">
-        <h1>cartItems</h1>
-        {console.log(realCart)}
+        <h1>Cart Items</h1>
+        <div className="cartList">
+          {cartItems.map(item =>(
+            <div key={cartItems.indexOf(item)} className="thumbnailWithButton" >
+              <ItemThumbnail itemDetails = {item} /> 
+              <div>{item.count}</div>
+              <button onClick={props.removeFromCart} id={cartItems.indexOf(item)}>Remove From Cart</button>
+            </div>
+          )
+      
+            
+          )}
+        </div>
+        <div>Cart Total: {price}</div>
       </div>
     );
   }

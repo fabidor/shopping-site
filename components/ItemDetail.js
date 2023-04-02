@@ -11,16 +11,17 @@ const ItemDetail =(props) =>{
    const fetchItem = async () => {
       const data = await fetch(`https://fakestoreapi.com/products/${m.id}`)
       const product = await data.json();
+      product.price = product.price.toFixed(2);
       updateItem(product)
      
    }
     return (
-      <div id={item.id}>
-        <h1>{item.title}</h1>
-        <img src={item.image} alt="Product"></img>
-        <div>{item.description}</div>
-        <div>Price: ${item.price}</div>
-        <button onClick={addItem} id={item.id}>Add To Cart</button>
+      <div id={item.id} className="itemPage">
+        <h1 className="itemTitle">{item.title}</h1>
+        <img  className="itemImage" src={item.image} alt="Product"></img>
+        <div className="itemDescription">{item.description}</div>
+        <div className="itemPrice">Price: ${item.price}</div>
+        <button onClick={addItem} id={item.id} className="addButton">Add To Cart</button>
       </div>
 
     );

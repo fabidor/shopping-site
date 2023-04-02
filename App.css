@@ -11,7 +11,22 @@ nav{
 }
 
 
+.itemPage{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: lightgray;
+}
 
+.itemImage{
+  width: 400px;
+}
+
+.itemDescription{
+  width: 400px;
+  align-self: center; 
+}
 .options{
   display: grid;
   width: 100%;
@@ -30,3 +45,43 @@ li{
   color: white;
   text-decoration: none;
 }
+
+.thumbnailWithButton{
+  display: grid;
+  grid-template-rows: 5fr 1fr;
+  justify-items: center;
+  align-items: center;
+  border-radius: 5px;
+  border: black;
+}
+
+.thumbnail{
+  max-width: 150px;
+  max-height: 200px;
+  display: grid;
+  grid-template-rows: 1fr 4fr 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+.thumbnailTitle{
+  font-size: 10px;
+  max-height: 20px;
+
+}
+
+.thumbnailImage{
+  height: 100px;
+}
+
+.thumbnailPrice{
+  font-size: 15px;
+}
+
+.cartList,
+.shoppingList{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
