@@ -49,6 +49,12 @@ const fetchItem = async (id) =>{
   }
   updateCart(newCart);
  }
+ const increaseItem = (e) =>{
+  let newCart = [...cart];
+  let updateCandidate=newCart[e.target.id];
+  updateCandidate.count = updateCandidate.count + 1;
+  updateCart(newCart);
+ }
   useEffect(() =>{
    updateCartSize(cart.length);
   }, [cart]) 
@@ -58,7 +64,7 @@ const fetchItem = async (id) =>{
       <Routes>
         <Route path= "/" element={<About />} />
         <Route path = "/shop" element = {<Shop addToCart={addToCart}/>} />
-        <Route path = "/cart" element = {<Cart cart = {cart} removeFromCart={removeFromCart} reduceItem={reduceItem}/>} />
+        <Route path = "/cart" element = {<Cart cart = {cart} removeFromCart={removeFromCart} reduceItem={reduceItem} increaseItem = {increaseItem}/>} />
         <Route path="/shop/:id" element = {<ItemDetail addToCart={addToCart}/>} />
       </Routes>
     </BrowserRouter>

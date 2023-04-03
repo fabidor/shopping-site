@@ -20,6 +20,7 @@ const Cart =(props)=> {
               <ItemThumbnail itemDetails = {item} /> 
               <button onClick = {props.reduceItem} id={cartItems.indexOf(item)}>-</button>
               <div>{item.count}</div>
+              <button onClick = {props.increaseItem} id={cartItems.indexOf(item)}>+</button>
               <button onClick={props.removeFromCart} id={cartItems.indexOf(item)}>Remove From Cart</button>
             </div>
           )
