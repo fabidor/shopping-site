@@ -12,15 +12,17 @@ const Cart =(props)=> {
   }
   const price = cartPrice(cartItems);
     return (
-      <div className="App">
+      <div className="cart">
         <h1>Cart Items</h1>
         <div className="cartList">
           {cartItems.map(item =>(
             <div key={cartItems.indexOf(item)} className="thumbnailWithButton" >
               <ItemThumbnail itemDetails = {item} /> 
-              <button onClick = {props.reduceItem} id={cartItems.indexOf(item)}>-</button>
-              <div>{item.count}</div>
-              <button onClick = {props.increaseItem} id={cartItems.indexOf(item)}>+</button>
+              <div className="countWithButtons">
+                <button onClick = {props.reduceItem} id={cartItems.indexOf(item)}>-</button>
+                <div className="itemCount">{item.count}</div>
+                <button onClick = {props.increaseItem} id={cartItems.indexOf(item)}>+</button>
+              </div>
               <button onClick={props.removeFromCart} id={cartItems.indexOf(item)}>Remove From Cart</button>
             </div>
           )

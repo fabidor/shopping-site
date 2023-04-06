@@ -14,7 +14,7 @@ const Shop =(props) =>{
       updateList(parsedItems)
    }
     return (
-      <div className="App"> 
+      <div className="shop"> 
         <h1>Shop</h1>
         <div className="shoppingList">
           {shoppingList.map(item => (

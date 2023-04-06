@@ -7,7 +7,7 @@ const Nav=(props) => {
         <nav>
         <ul className="options">
             <Link to="/">
-                <li>About</li>
+                <li>Calico Cut Pants</li>
             </Link>
             <Link to="/shop">
                 <li>Shop</li>
